@@ -30,3 +30,7 @@ The following technology is used to run this project:
 - `udagram-servers-params.json` CloudFormation resources template parameters JSON file
 - `.gitignore` Git ignore file
 - `README.md` README documentation
+
+### Deployment Diagram
+
+![AWS Deployment Diagram](Udagram Web App Diagram.png)
