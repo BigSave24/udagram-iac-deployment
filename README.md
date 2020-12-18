@@ -23,7 +23,7 @@ The following technology is used to run this project:
 
 - `create.sh` Shell script file to run CloudFormation create stack commands
 - `update.sh` Shell script file to run CloudFormation update stack commands
-- `Udagram Web App Diagram.png` Deployment infrastructure diagram file
+- `UdagramWebAppDiagram.png` Deployment infrastructure diagram file
 - `udagram-infra.yml` CloudFormation infrastructure template YAML file
 - `udagram-servers.yml` CloudFormation resources template YAML file
 - `udagram-infra-params.json` CloudFormation infrastructure template parameters JSON file
@@ -33,4 +33,4 @@ The following technology is used to run this project:
 
 ### Deployment Diagram
 
-![AWS Deployment Diagram](Udagram Web App Diagram.png)
+[AWS Deployment Diagram](UdagramWebAppDiagram.png)
