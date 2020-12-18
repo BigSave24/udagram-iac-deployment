@@ -17,6 +17,14 @@ Parameters:
     Description: An environment name that will be prefixed to resource names
     Type: String
 
+  VpcCIDR:
+    Description: IP range for the Private VPN Network
+    Type: String
+
+  PublicInternetCIDR:
+    Description: An environment name that will be prefixed to resource names
+    Type: String
+
 Resources:
   # Create Load Balancer Security Group
   LBSecGroup:
@@ -29,12 +37,12 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          CidrIp: 0.0.0.0/0
+          CidrIp: !Ref PublicInternetCIDR
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          CidrIp: 10.0.0.0/16
+          CidrIp: !Ref VpcCIDR
 
   # Create Web Server Security Group
   WebServerSecGroup:
@@ -47,16 +55,16 @@ Resources:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
-          CidrIp: 0.0.0.0/0
+          CidrIp: !Ref PublicInternetCIDR
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: 0.0.0.0/0
+          CidrIp: !Ref PublicInternetCIDR
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 0
           ToPort: 65535
-          CidrIp: 0.0.0.0/0
+          CidrIp: !Ref PublicInternetCIDR
 
   # Create Bastion Host Security Group
   JumpServerSecGroup:
@@ -69,12 +77,12 @@ Resources:
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: 0.0.0.0/0
+          CidrIp: !Ref PublicInternetCIDR
       SecurityGroupEgress:
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
-          CidrIp: 10.0.0.0/16
+          CidrIp: !Ref VpcCIDR
 
   # Create Web Server Launch Configuration
   WebAppLaunchConfig:
